@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,5 +98,35 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .nav-button {
+    @apply px-4 py-2 text-sm font-medium transition-colors hover:bg-black hover:text-white rounded;
+  }
+  
+  .nav-social-icon {
+    @apply w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 hover:bg-black hover:text-white transition-colors;
+  }
+  
+  .catalog-item {
+    @apply flex flex-col items-center p-4 transition-all hover:scale-105;
+  }
+  
+  .marquee-container {
+    @apply whitespace-nowrap overflow-hidden relative;
+  }
+  
+  .marquee-content {
+    @apply inline-block animate-marquee;
+  }
+  
+  .advantage-item {
+    @apply flex items-start gap-3 mb-4;
+  }
+  
+  .contact-input {
+    @apply w-full p-2 border border-gray-300 rounded bg-white/90;
   }
 }
