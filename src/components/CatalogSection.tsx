@@ -1,76 +1,88 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 // Define product types
-type Product = {
+export type Product = {
   id: number;
   name: string;
   image: string;
   category: string;
+  description?: string;
 };
 
 // Sample products data
-const products: Product[] = [
+export const products: Product[] = [
   { 
     id: 1, 
     name: "DIZIA", 
     image: "/placeholder.svg", 
-    category: "sofas" 
+    category: "sofas",
+    description: "Модульная система диванов, разработанная для обеспечения максимального комфорта."
   },
   { 
     id: 2, 
     name: "BON BON LINEA", 
     image: "/placeholder.svg", 
-    category: "sofas" 
+    category: "sofas",
+    description: "Модульная система диванов с возможностью комбинирования различных элементов."
   },
   { 
     id: 3, 
     name: "PLUS PLUM", 
     image: "/placeholder.svg", 
-    category: "sofas" 
+    category: "sofas",
+    description: "Элегантный диван с плюшевой обивкой, создающий атмосферу уюта и комфорта."
   },
   { 
     id: 4, 
     name: "ASTON VILLA", 
     image: "/placeholder.svg", 
-    category: "sofas" 
+    category: "sofas",
+    description: "Классический дизайн, воплощающий вневременную элегантность и комфорт."
   },
   { 
     id: 5, 
     name: "FOX", 
     image: "/placeholder.svg", 
-    category: "sofas" 
+    category: "sofas",
+    description: "Современный диван с инновационным дизайном для стильного интерьера."
   },
   { 
     id: 6, 
     name: "OSLO", 
     image: "/placeholder.svg", 
-    category: "chairs" 
+    category: "chairs",
+    description: "Скандинавский стиль с минималистичным дизайном и максимальным комфортом."
   },
   { 
     id: 7, 
     name: "BARCELONA", 
     image: "/placeholder.svg", 
-    category: "chairs" 
+    category: "chairs",
+    description: "Культовый дизайн, вдохновленный архитектурной традицией Баухауса."
   },
   { 
     id: 8, 
     name: "TULIP", 
     image: "/placeholder.svg", 
-    category: "tables" 
+    category: "tables",
+    description: "Органичный дизайн, вдохновленный природными формами цветка тюльпана."
   },
   { 
     id: 9, 
     name: "MARBLE", 
     image: "/placeholder.svg", 
-    category: "tables" 
+    category: "tables",
+    description: "Роскошный стол с мраморной столешницей, сочетающий стиль и практичность."
   },
   { 
     id: 10, 
     name: "ARTDECO", 
     image: "/placeholder.svg", 
-    category: "cabinets" 
+    category: "cabinets",
+    description: "Шкаф в стиле арт-деко, сочетающий геометрические формы и роскошные материалы."
   }
 ];
 
@@ -117,8 +129,9 @@ const CatalogSection = () => {
         {/* Product Grid */}
         <div className="flex flex-col items-center space-y-12">
           {filteredProducts.map((product) => (
-            <div
+            <Link
               key={product.id}
+              to={`/product/${product.id}`}
               className="catalog-item w-full max-w-sm"
             >
               <div className="overflow-hidden rounded-lg mb-4">
@@ -129,7 +142,7 @@ const CatalogSection = () => {
                 />
               </div>
               <h3 className="text-xl font-medium text-center">{product.name}</h3>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

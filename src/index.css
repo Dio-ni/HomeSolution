@@ -118,10 +118,6 @@
     @apply whitespace-nowrap overflow-hidden relative;
   }
   
-  .marquee-content {
-    @apply inline-block animate-marquee;
-  }
-  
   .advantage-item {
     @apply flex items-start gap-3 mb-4;
   }
@@ -129,4 +125,22 @@
   .contact-input {
     @apply w-full p-2 border border-gray-300 rounded bg-white/90;
   }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+/* Additional utility classes for product detail page */
+.bg-furniture-beige {
+  background-color: #F5F5F0;
 }

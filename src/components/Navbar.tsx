@@ -1,6 +1,7 @@
 
 import { Facebook, Instagram, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -8,15 +9,14 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-8">
           {/* Logo */}
-          <a href="/" className="text-2xl font-bold">Saloni</a>
+          <Link to="/" className="text-2xl font-bold">Saloni</Link>
           
           {/* Navigation Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <button className="nav-button">Главная</button>
-            <button className="nav-button">Кресла</button>
-            <button className="nav-button">Тумбы</button>
-            <button className="nav-button">Сервис</button>
-            <button className="nav-button">О нас</button>
+            <Link to="/" className="nav-button">Главная</Link>
+            <Link to="/catalog" className="nav-button">Каталог</Link>
+            <Link to="/about" className="nav-button">О нас</Link>
+            <Link to="/address" className="nav-button">Адрес</Link>
           </div>
         </div>
         
