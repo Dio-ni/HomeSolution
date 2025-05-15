@@ -1,8 +1,8 @@
 
 import React from 'react';
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
-import CatalogSection from "@/components/CatalogSection";
+import CatalogSection from "@/components/CatalogSection/CatalogSection";
 
 const CatalogPage = () => {
   return (

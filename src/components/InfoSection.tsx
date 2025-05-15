@@ -1,45 +1,42 @@
 
+import InfoImg from "../assets/infoSection.png"
 const InfoSection = () => {
   return (
-    <section className="py-16 px-6 bg-black text-white">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+    <section className="  pb-16 md:px-6 bg-black text-white">
+      <div className="w-[100%] 
+      relative 
+      left-[-20px] 
+      md:left-[-100px] 
+      max-w-7xl mx-auto flex flex-row 
+      gap-10 md:gap-16 items-center">
         {/* Left side - Image */}
-        <div className="rounded-lg overflow-hidden">
+        <div className=" relative rounded-lg overflow-hidden">
           <img 
-            src="/placeholder.svg" 
+            src={InfoImg}
             alt="Store location" 
-            className="w-full h-full object-cover" 
+            className="w-[60vw] md:w-[50vw]  object-cover" 
           />
         </div>
         
         {/* Right side - Information with dividing lines */}
-        <div className="space-y-6">
-          <div className="pb-4 border-b border-gray-700">
-            <h3 className="text-2xl font-bold mb-2">Не шоппинг, а опыт</h3>
-            <p className="text-gray-300">
-              Погрузитесь в эстетику и комфорт в нашем шоуруме
-            </p>
+        <div className="space-y-2 md:ml-10 md:space-y-6 w-[30vw] md:w-[40vw]">
+          <div className="mb-2 md:pb-4 border-b border-gray-200">
+            <h3 className="text-[14px] md:text-3xl font-regular mb-0 md:mb-2">На рынке более 3х лет</h3>
           </div>
           
-          <div className="py-4 border-b border-gray-700">
-            <h3 className="text-2xl font-bold mb-2">Продажа мебели</h3>
-            <p className="text-gray-300">
-              От классического до современного дизайна на любой вкус
-            </p>
+          <div className="py-2 md:py-4 border-b border-gray-200">
+            <h3 className="text-[14px] md:text-3xl font-regular mb-0 md:mb-2">Порядка 5 000 кв. торговая площадь</h3>
+            
           </div>
           
-          <div className="py-4 border-b border-gray-700">
-            <h3 className="text-2xl font-bold mb-2">Качественное исполнение</h3>
-            <p className="text-gray-300">
-              Работаем только с проверенными производителями мебели
-            </p>
+          <div className="py-2 md:py-4 border-b border-gray-200">
+            <h3 className="text-[14px] md:text-3xl font-regular mb-0 md:mb-2">Более 1 000 моделей по наличию</h3>
+      
           </div>
           
-          <div className="pt-4">
-            <h3 className="text-2xl font-bold mb-2">Консультация экспертов</h3>
-            <p className="text-gray-300">
-              Наши специалисты помогут с выбором идеальной мебели для вашего интерьера
-            </p>
+          <div className="pt-2 md:pt-4">
+            <h3 className="text-[14px] md:text-3xl font-regular mb-0 md:mb-2">Как жилые так и коммерческие помещения</h3>
+            
           </div>
         </div>
       </div>

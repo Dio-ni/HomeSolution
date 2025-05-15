@@ -1,0 +1,76 @@
+/* Gradient background with transparency */
+.heroSection{
+  height: 145vh;
+}
+.scrolling {
+ height: 145vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,         /* transparent at top */
+    rgba(0, 0, 0, 0.2) 30%,   
+    rgba(0, 0, 0, 0.4) 45%,   /* soft darkening starts */
+    rgba(0, 0, 0, 0.6) 50%,      /* mid darkness */
+    rgba(0, 0, 0, 1) 70%,     /* strong shadow */
+    rgba(0, 0, 0, 1) 100%        /* fully dark at bottom */
+  );
+  padding-top: 25vh; 
+  
+}
+
+
+/* Marquee stays at bottom inside .scrolling */
+.scrolling .marquee-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 150px 0;
+  overflow: hidden;
+}
+
+.marquee {
+  background-color: #0071E3;
+  display: inline-flex;
+  white-space: nowrap;
+  height: 50px;
+  font-size: 24px;
+  gap:200px;
+  animation: scroll-left 40s linear infinite;
+}
+.marquee span{
+  display: flex;
+  align-items: center;
+}
+
+/* Example scrolling animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media screen and (max-width: 768px){
+  .heroSection{
+    height: 70vh;
+  }
+  .scrolling {
+   height: 70vh;
+   background: transparent;
+  }
+  .scrolling .marquee-container {
+
+    padding: 30px 0;
+  }
+  .marquee{
+    gap: 100px;
+    height: 21px;
+  }
+  
+}

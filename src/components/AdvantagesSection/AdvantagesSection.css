@@ -1,0 +1,21 @@
+#advantages{
+    font-family: "Manrope", sans-serif;
+}
+.advantages-title{
+    letter-spacing: 2px;
+    font-size: 60px;
+}
+
+
+.advantage-item {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+@media screen and (max-width: 768px) {
+    .advantages-title{
+        
+        font-size: 20px;
+    }
+}
+  

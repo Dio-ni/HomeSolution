@@ -1,19 +1,20 @@
 
 import React from 'react';
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
-import ContactSection from "@/components/ContactSection";
+import ContactSection from "@/components/ContactSection/ContactSection";
+import AboutImg from '../assets/about.png';
 
 const About = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
       
-      <main className="pt-16">
+      <main className="pt-14">
         {/* Hero Section */}
         <section className="relative h-[50vh] overflow-hidden">
           <img 
-            src="https://images.unsplash.com/photo-1721322800607-8c38375eef04" 
+            src={AboutImg}
             alt="Интерьер Saloni" 
             className="w-full h-full object-cover"
           />
@@ -22,66 +23,56 @@ const About = () => {
         {/* О нас в цифрах */}
         <section className="py-16 px-6 bg-white">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">О нас в цифрах</h2>
+            <h2 className="text-3xl font-medium text-center mb-12">О нас в цифрах</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
-                <p className="text-4xl font-bold">15+</p>
-                <p className="text-gray-600 mt-2">Лет на рынке</p>
+                <p className="text-5xl font-bold">2023</p>
+                <p className="text-gray-600 mt-2">Дата создания</p>
               </div>
               
               <div className="text-center">
-                <p className="text-4xl font-bold">500+</p>
-                <p className="text-gray-600 mt-2">Реализованных проектов</p>
+                <p className="text-5xl font-bold">180+</p>
+                <p className="text-gray-600 mt-2">С нами сотрудничают дизайнера</p>
               </div>
               
               <div className="text-center">
-                <p className="text-4xl font-bold">50+</p>
-                <p className="text-gray-600 mt-2">Профессиональных дизайнеров</p>
+                <p className="text-5xl font-bold">4000 м2</p>
+                <p className="text-gray-600 mt-2">Площадь склада</p>
               </div>
               
-              <div className="text-center">
-                <p className="text-4xl font-bold">10K+</p>
-                <p className="text-gray-600 mt-2">Довольных клиентов</p>
-              </div>
+             
             </div>
           </div>
         </section>
         
-        <hr className="border-t border-gray-200 max-w-7xl mx-auto" />
+        <hr className="border-t border-gray-200 max-w-7xl  mx-16" />
         
         {/* Наша команда */}
         <section className="py-16 px-6 bg-white">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Наша команда</h2>
+            <h2 className="text-3xl font-medium text-center mb-12">Наша команда</h2>
             
             <div className="mb-12">
               <p className="text-lg max-w-2xl">
-                Команда Saloni состоит из профессионалов с многолетним опытом работы в области дизайна интерьера и производства мебели.
-                Мы объединены общей страстью к созданию идеальных пространств, которые отражают индивидуальность наших клиентов.
+              Руководство компании : 
               </p>
               <hr className="border-t border-gray-200 my-8" />
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                  <h3 className="text-xl font-medium">Проектирование</h3>
-                  <p className="text-gray-600 mt-2">
-                    Наши дизайнеры создают уникальные концепции, учитывая все пожелания клиента и особенности пространства.
-                  </p>
+                  <h3 className="text-lg font-base">Уразбеков Даурен - генеральный директор</h3>
+                  
                 </div>
                 
                 <div>
-                  <h3 className="text-xl font-medium">Производство</h3>
-                  <p className="text-gray-600 mt-2">
-                    Мы используем только качественные материалы и современное оборудование для создания мебели высшего класса.
-                  </p>
+                  <h3 className="text-lg font-base">Уразбекова Молдир - директор</h3>
+                  
                 </div>
                 
                 <div>
-                  <h3 className="text-xl font-medium">Сервис</h3>
-                  <p className="text-gray-600 mt-2">
-                    Наша команда обеспечивает безупречное обслуживание на всех этапах – от консультации до установки.
-                  </p>
+                  <h3 className="text-lg font-base">Тукунов Бахтияр - управляющий директор</h3>
+                  
                 </div>
               </div>
             </div>
