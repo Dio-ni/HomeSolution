@@ -7,15 +7,20 @@ import { FaWhatsapp } from "react-icons/fa";
 import InfoSection from "@/components/InfoSection";
 import ContactSection from "@/components/ContactSection/ContactSection";
 import Footer from "@/components/Footer";
+import { useState } from "react";
+import FixedSocialContacts from "@/components/FixedSocialContacts";
 
 const Index = () => {
+  
+  const [activeCategory, setActiveCategory] = useState("sofas");
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-hidden">
       <Navbar />
       
       <main>
+        <FixedSocialContacts/>
         <HeroSection />
-        <CatalogSection />
+        <CatalogSection activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
         <AdvantagesSection />
         <InfoSection />
         <ContactSection backgroundImageUrl="/assets/contactSection.png"/>
@@ -24,7 +29,7 @@ const Index = () => {
         </div>
       </main>
       
-      <Footer />
+      <Footer  setActiveCategory={setActiveCategory}/>
     </div>
   );
 };

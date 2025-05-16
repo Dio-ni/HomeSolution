@@ -3,11 +3,17 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import "./ContactSection.css"
+import { useLocation } from "react-router-dom"; // 👈 Add this
+
 import ContactImage from "../../assets/contactSection.png"
 interface ContactProps {
   backgroundImageUrl?: string;
 }
 const ContactSection = ({ backgroundImageUrl }: ContactProps)  => {
+   const location = useLocation(); // 👈 Add this
+  const isProductPage = location.pathname.includes("/product/"); // 👈 Add this
+  
+
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -20,6 +26,15 @@ const ContactSection = ({ backgroundImageUrl }: ContactProps)  => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
+    const getImageWidthClass = () => {
+      if (location.pathname.includes("sofas")) return "w-[80vw]";
+      if (location.pathname.includes("beds")) return "w-[65vw]";
+      if (location.pathname.includes("cabinets")) return "w-[50vw]";
+      if (location.pathname.includes("sideboard")) return "w-[40vw]";
+      return "w-full"; // по умолчанию
+    };
+
+    const imageWidthClass = getImageWidthClass();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,25 +57,35 @@ const ContactSection = ({ backgroundImageUrl }: ContactProps)  => {
   return (
     <section id="contact" className="relative pt-[30px] md:pt-[200px] pb-[60px] md:pb-[270px] px-6 bg-[#F5F5F7] text-black">
       {/* Background image with overlay */}
-      <div className="absolute bottom-0 left-0">
+      <div className={`absolute bottom-0 md:bottom-[15vh]  w-[80vw] md:${imageWidthClass}`}>
         <img 
           src={backgroundImageUrl} 
           alt="Background" 
-          className="w-full  object-cover"
+          className="object-cover w-full h-auto"
         />
       </div>
       
       <div className=" text-center md:text-left relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 ">
         {/* Left side - Text content */}
-        <div className=" ">
+        <div className="hidden md:block  ">
           <p className="text-[14px] md:text-[30px] font-medium mb-6">Мебель, созданная специально для вас! 
   
             Заполните форму, и мы свяжемся с вами, 
             чтобы обсудить все детали</p>
+            
           
           <p className="mt-[20px] md:mt-[40px] text-[12px] md:text-[22px]">
           Наши специалисты помогут вам подобрать лучшее решение, ответят на все вопросы и оформят заказ!
             </p>
+          
+        </div>
+        <div className="block md:hidden  ">
+          <p className="text-[14px] md:text-[30px] font-medium mb-6">Мебель, созданная специально для вас! 
+            </p>
+            
+          
+          <p className="mt-[20px] md:mt-[40px] text-[12px] md:text-[22px]">
+          Заполните форму, и мы свяжемся с вами, чтобы обсудить все детали</p>
           
         </div>
         

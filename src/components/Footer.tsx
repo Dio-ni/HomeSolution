@@ -1,59 +1,87 @@
 
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Facebook, Instagram, Phone, Twitter } from "lucide-react";
 
-const Footer = ()=> {
+import LogoWhite from '../assets/icons/logo_white.svg';
+
+import Whatsapp from "../assets/icons/whatsapp.svg";
+import PhoneLogo from "../assets/icons/phone.svg";
+import { GrInstagram } from "react-icons/gr";
+type FooterProps = {
+  setActiveCategory: (category: string) => void;
+};
+
+const Footer  = ({ setActiveCategory }: FooterProps) => {
+
   return (
     <footer className="bg-black text-white py-12 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and description */}
-          <div className="col-span-1 md:col-span-1">
-            <h3 className="text-2xl font-bold mb-4">Saloni</h3>
-            <p className="text-gray-400">
-              Премиальная мебель для вашего интерьера. Качество, стиль и комфорт.
+          <div className="col-span-1 md:col-span-1 md:max-w-[200px]  border-b border-[#999999] md:border-0 pb-8">
+            {/* <h3 className="text-2xl font-bold mb-4">Saloni</h3> */}
+            <img src={LogoWhite} alt="" />
+            <p className="text-gray-400 mt-4 md:mt-10">
+            Премиальная мебель.  <br />
+            Уникальное решение для вашего дома
             </p>
           </div>
           
           {/* Quick links */}
           <div>
-            <h4 className="text-lg font-medium mb-4">Навигация</h4>
+            <h4 className="text-lg font-medium mb-4">Каталог</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white">Главная</a></li>
-              <li><a href="#catalog" className="text-gray-400 hover:text-white">Каталог</a></li>
-              <li><a href="#advantages" className="text-gray-400 hover:text-white">О нас</a></li>
-              <li><a href="#contact" className="text-gray-400 hover:text-white">Контакты</a></li>
+              <li><a href="#catalog" onClick={() => setActiveCategory("sofas")} className="text-gray-400 hover:text-white">Диваны</a></li>
+              <li><a href="#catalog" onClick={() => setActiveCategory("beds")} className="text-gray-400 hover:text-white">Кровати</a></li>
+              <li><a href="#catalog" onClick={() => setActiveCategory("cabinets")} className="text-gray-400 hover:text-white">Тумбы</a></li>
+              <li><a href="#catalog" onClick={() => setActiveCategory("sideboard")} className="text-gray-400 hover:text-white">Серванты</a></li>
             </ul>
           </div>
           
           {/* Contact info */}
           <div>
-            <h4 className="text-lg font-medium mb-4">Контакты</h4>
+            <h4 className="text-lg font-medium mb-4">Шоурум</h4>
             <ul className="space-y-2">
-              <li className="text-gray-400">ул. Примерная 123, Алматы</li>
-              <li className="text-gray-400">+7 (123) 456-7890</li>
-              <li className="text-gray-400">info@saloni.kz</li>
+              <li className="text-gray-400">
+                <a target="_blank"
+              rel="noopener noreferrer"
+              href="https://go.2gis.com/woD7c">Достык 3</a></li>
+              <li className="text-gray-400">
+                <a target="_blank"
+              rel="noopener noreferrer"
+              href="https://go.2gis.com/TSiIW"
+              >Коргалжын шоссе 13Д</a></li>
+              <li className="text-gray-400">
+                <a target="_blank"
+              rel="noopener noreferrer"
+               href="tel:+77007420000">+7 (700) 742-00-00</a></li>
             </ul>
           </div>
           
           {/* Social and subscribe */}
           <div>
-            <h4 className="text-lg font-medium mb-4">Следите за нами</h4>
+            <h4 className="text-lg font-medium mb-4">Связаться с нами</h4>
             <div className="flex space-x-4 mb-4">
-              <a href="#" className="hover:text-gray-300">
-                <Facebook className="w-5 h-5" />
+              <a target="_blank"
+              rel="noopener noreferrer"
+              href="tel:+77007420000" className="hover:text-gray-300">
+                <img src={PhoneLogo}  className="w-6 h-6" />
               </a>
               <a href="#" className="hover:text-gray-300">
-                <Instagram className="w-5 h-5" />
+                <img src={Whatsapp} className="w-5 h-5" />
+                
               </a>
-              <a href="#" className="hover:text-gray-300">
-                <Twitter className="w-5 h-5" />
+              
+              <a href="https://www.instagram.com/homesolution.kz/#"
+              target="_blank"
+              rel="noopener noreferrer" className="hover:text-gray-300">
+                <GrInstagram className="w-5 h-5" />
               </a>
             </div>
           </div>
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-          <p>&copy; 2025 Saloni. Все права защищены.</p>
+          <p>&copy; 2025 Home Solution. Все права защищены.</p>
         </div>
       </div>
     </footer>

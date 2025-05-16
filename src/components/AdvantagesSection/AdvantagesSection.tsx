@@ -5,6 +5,9 @@ import { FaCheck } from "react-icons/fa6";
 import Card1 from "../../assets/gallerySection/card1.png";
 import Card2 from "../../assets/gallerySection/card2.png";
 import Card3 from "../../assets/gallerySection/card3.png";
+import Card4 from "../../assets/gallerySection/card4.png";
+import Card5 from "../../assets/gallerySection/card5.png";
+import Card6 from "../../assets/gallerySection/card6.png";
 
 import Whatsapp from "../../assets/icons/whatsapp.svg"
 
@@ -18,7 +21,7 @@ const advantages = [
 
 const AdvantagesSection = () => {
   return (
-    <section id="advantages" className="py-10 md:py-14 bg-black text-white w-full">
+    <section id="advantages" className="overflow-hidden py-10 md:py-14 bg-black text-white w-full">
       <div className="max-w-7xl mx-auto px-4 ">
         {/* Заголовок (всегда отображается по центру) */}
         <h2 className="advantages-title text-center mb-8 font-semibold">
@@ -57,39 +60,45 @@ const AdvantagesSection = () => {
       </div>
       <div className="overflow-hidden bg-black py-10 md:py-16 px-4 md:px-6 text-white">
       <div className="max-w-7xl mx-auto">
-        {/* Обертка с overflow hidden, чтобы скрывать боковые карточки */}
-        <div className="relative h-[30vw] flex justify-center items-center absolute top-1/2 left-[-50%] transform">
-          <div className="flex gap-[8px] md:gap-[30px] items-center ">
-            {[Card1, Card2, Card3].map((card, i) => (
-              <div
-                key={i}
-                className="flex-shrink-0 rounded-xl overflow-hidden shadow-lg h-[30vw]"
-              >
-                <img
-                  src={card}
-                  alt={`Furniture showcase ${i + 1}`}
-                  className="h-full w-auto object-contain"
-                />
-              </div>
-            ))}
+        <div className="relative h-[30vw] overflow-hidden">
+          {/* Прокручивающаяся обертка */}
+          <div className="scroll-wrapper w-max gap-[8px] md:gap-[30px]">
+            {[...Array(2)].flatMap(() =>
+              [Card1, Card2, Card3, Card4, Card5, Card6].map((card, i) => (
+                <div
+                  key={`${card}-${i}-${Math.random()}`}
+                  className="flex-shrink-0 rounded-xl overflow-hidden shadow-lg h-[30vw]"
+                >
+                  <img
+                    src={card}
+                    alt={`Furniture showcase ${i + 1}`}
+                    className="h-full w-auto object-contain"
+                  />
+                </div>
+              ))
+            )}
           </div>
         </div>
 
+        {/* Кнопка WhatsApp */}
         <div className="flex items-center justify-center mt-8 md:mt-[70px]">
-            <a className="max-w-[50vw] 
+          <a
+            className="max-w-[60vw] md:max-w-[400px] 
             w-full justify-center items-center flex 
-            gap-[7px] md:gap-[16px] items-center 
-            bg-[#26D367] rounded-[10px]
-             md:rounded-[30px] text-white  
-             md:py-[15px] py-[10px] 
-             md:px-[70px] transition-colors">
-              <img src={Whatsapp} className="h-[14px] md:h-[26px]" />
-              <span className="text-[12px] md:text-[24px]">Связаться с нами</span>
-            </a>
+            gap-[7px] md:gap-[16px] 
+            bg-[#26D367] rounded-[10px] md:rounded-[30px] 
+            text-white md:py-[15px] py-[10px] md:px-[70px] transition-colors"
+            href="https://wa.me/77007420000"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={Whatsapp} className="h-[14px] md:h-[26px]" />
+            <span className="text-[12px] md:text-[24px]">Связаться с нами</span>
+          </a>
         </div>
-
       </div>
     </div>
+
     </section>
 
   );

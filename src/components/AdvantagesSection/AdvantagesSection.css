@@ -19,3 +19,17 @@ gap: 12px;
     }
 }
   
+
+@keyframes scroll-cards {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.scroll-wrapper {
+  display: flex;
+  animation: scroll-cards 70s linear infinite;
+}

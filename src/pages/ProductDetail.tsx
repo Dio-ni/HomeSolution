@@ -12,14 +12,8 @@ import PdfIcon from "../assets/icons/pdficon.png"
 import { cn } from '@/lib/utils';
 import "./ProductPage.css"
 import { Wave } from "react-animated-text";
+import FixedSocialContacts from "@/components/FixedSocialContacts";
 
-const exampleStyle = {
-  display: "inline-block",
-  padding: "2em 1em 1em 1em",
-  width: "80%",
-  fontSize: "2rem",
-  textAlign: "center"
-};
 
 const categories = [
   { id: "sofas", name: "Диваны" },
@@ -30,15 +24,18 @@ const categories = [
 ];
 
 const ProductDetail = () => {
+  
   const [activeCategory, setActiveCategory] = useState("sofas");
+const [fullscreenImg, setFullscreenImg] = useState<string | null>(null);
+const closeFullscreenImg = () => setFullscreenImg(null);
 
   const filteredProducts = allProducts.filter(
     (product) => product.category === activeCategory
   );
-  const { id } = useParams();
+  const { title } = useParams();
   const navigate = useNavigate();
   
-  const product = allProducts.find(p => p.id === Number(id));
+  const product = allProducts.find(p => p.title.toLowerCase().replace(/\s+/g, '-') === title);
   
   if (!product) {
     return (
@@ -76,10 +73,11 @@ useEffect(() => {
   return (
     <div className="min-h-screen">
       <Navbar />
+      <FixedSocialContacts/>
       
       <main className="pt-14 md:pt-14">
         {/* Category Navigation */}
-          <div className="flex md:hidden justify-center mx-2 mt-4 mb-4">
+          {/* <div className="flex md:hidden justify-center mx-2 mt-4 mb-4">
             <div className="flex w-full flex-wrap justify-between md:justify-between gap-0 md:gap-2">
               {categories.map((category) => (
                 <button
@@ -94,39 +92,23 @@ useEffect(() => {
                 </button>
               ))}
             </div>
-          </div>
+          </div> */}
           
         {/* Hero Section */}
-        {/* <section className="relative h-50vh md:h-[100vh] overflow-hidden">
-          <img 
-            src={`/assets/products/${product.prefix+product.backimg}`}
+         <section className="relative h-50vh md:h-[100vh] overflow-hidden">
+            <img 
+              src={`/assets/products/${product.prefix+product.backimg}`}
 
-            alt={product.title} 
-            className="w-full h-full object-cover"
-          />
+              alt={product.title} 
+              className="w-full h-full object-cover"
+            />
           <div className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center">
             <div className="text-center text-white">
               <h1 className="text-[12vw] md:text-[96px] font-bold mb-4 font-custom tracking-[15px] md:tracking-[30px]">{product.title}</h1>
             </div>
           </div>
         </section>
-         */}
-         <section className="relative h-50vh md:h-[100vh] overflow-hidden  text-black">
-            {/* Background image */}
-            
-
-            {/* Animated text */}
-            <div className="relative top-[50px] inset-0 text-[#2c2c2c] flex items-center justify-center">
-              <h1 className="text-[12vw] md:text-[20vw] font-medium font-custom tracking-[15px] md:tracking-[5vw] text-reveal">
-                {product.title}
-              </h1>
-            </div>
-            <img 
-              src={`/assets/products/${product.prefix + product.image}`}
-              alt={product.title} 
-              className="w-[90vw] mx-auto absolute top-[30%] translate-x-[5%]  object-cover "
-            />
-          </section>
+        
         
 
 
@@ -134,20 +116,47 @@ useEffect(() => {
         
         {product.imgs ?  (<section className='overflow-hidden w-full h-[20vh] md:h-[100vh] flex flex-row gap-2 md:gap-4 p-2 md:p-0 md:mt-16'>
           <div className='h-full prod-imgs-left w-[30%]'>
-              <img className="h-full" src={`/assets/products/${product.prefix+product.imgs.img1}`}/>
+              <img className="h-full" src={`/assets/products/${product.prefix+product.imgs.img1}`}
+              onClick={() => setFullscreenImg(`/assets/products/${product.prefix + product.imgs.img1}`)}/>
+              
+
           </div>
           <div className='h-full prod-imgs-right flex  gap-4 flex-col'>
               <div className='h-[40%] right-top flex  gap-4 md:gap-10 flex-row'>
-              <img className='w-[40%]' src={`/assets/products/${product.prefix+product.imgs.img2}`}/>
-              <img className='w-[60%]' src={`/assets/products/${product.prefix+product.imgs.img3}`}/>
+              <img className='w-[40%]' src={`/assets/products/${product.prefix+product.imgs.img2}`}
+              onClick={() => setFullscreenImg(`/assets/products/${product.prefix + product.imgs.img2}`)}/>
+              <img className='w-[60%]' src={`/assets/products/${product.prefix+product.imgs.img3}`}
+              onClick={() => setFullscreenImg(`/assets/products/${product.prefix + product.imgs.img3}`)}/>
               </div>
               <div className='h-[60%] right-bottom flex gap-10 flex-row '>
-                  <img className='w-[60%]' src={`/assets/products/${product.prefix+product.imgs.img4}`}/>
-                  <img className='w-[40%]' src={`/assets/products/${product.prefix+product.imgs.img5}`}/>
+                  <img className='w-[60%]' src={`/assets/products/${product.prefix+product.imgs.img4}`}
+                  onClick={() => setFullscreenImg(`/assets/products/${product.prefix + product.imgs.img4}`)}/>
+                  <img className='w-[40%]' src={`/assets/products/${product.prefix+product.imgs.img5}`}
+                  onClick={() => setFullscreenImg(`/assets/products/${product.prefix + product.imgs.img5}`)}/>
               </div>
           </div>
 
         </section>) : null}
+        {fullscreenImg && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center"
+            onClick={closeFullscreenImg}
+          >
+            <button
+              className="absolute top-5 right-5 text-white text-4xl"
+              onClick={closeFullscreenImg}
+            >
+              <IoCloseOutline />
+            </button>
+            <img
+              src={fullscreenImg}
+              alt="fullscreen"
+              className="max-w-[90vw] max-h-[90vh] rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        )}
+
         
         
         {/* Description */}
@@ -172,7 +181,7 @@ useEffect(() => {
         {/* Design Cards */}
 
         {product.cards.cardType1 ?
-        (<section className="overflow-x-auto px-6 ">
+        (<section className="overflow-x-auto px-6 py-6 ">
           <div className="max-w-7xl mx-auto">
 
           <div className="flex md:grid md:grid-cols-4 gap-10 md:gap-8  md:overflow-x-visible">
@@ -182,26 +191,30 @@ useEffect(() => {
               
               return cardsArray.map((card, index) => (
                 <div
-                  key={`${key}-${index}`}
-                  onClick={() => handleCardClick(key, index)}
-                  className="min-w-[280px] md:min-w-0 md:w-auto flex-shrink-0 md:flex-shrink 
-                            transition-shadow rounded-[20px] p-6 bg-[#F2F2F2] cursor-pointer 
-                            border border-transparent border-[1px] hover:border-[#1378FB] hover:bg-white"
-                >
-                  <h3 className="text-sm font-medium mb-4 text-center">{card.type || "PDF"}</h3>
-                  <div className="flex justify-center mb-4">
-                    {card.img ? (
-                      <img src={`/assets/products/${product.prefix + card.img}`} className="w-60 h-60 object-cover" />
-                    ) : card.previewImg ? (
-                      <img src={card.previewImg} className="w-60 h-60 object-cover" />
-                    ) : (
-                      <div className="w-40 h-40 flex items-center justify-center bg-gray-200 text-gray-600">
-                        Нет изображения
-                      </div>
-                    )}
+                key={`${key}-${index}`}
+                onClick={() => handleCardClick(key, index)}
+                className="min-w-[280px] md:min-w-0 md:w-auto items-center flex-shrink-0 md:flex-shrink 
+                          transition-shadow rounded-[20px] bg-[#F2F2F2] cursor-pointer  
+                          border-[2px] border-transparent hover:border-[#1378FB] hover:bg-white overflow-hidden"
+              >
+                {card.img ? (
+                  <img
+                    src={`/assets/products/${product.prefix + card.img}`}
+                    className="w-full h-[90vw] md:h-[105%] object-cover md:transform md:-translate-y-[2px]"
+                    alt="Product"
+                  />
+                ) : card.previewImg ? (
+                  <img
+                    src={card.previewImg}
+                    className="w-full h-[90vw] md:h-[105%] object-cover"
+                    alt="Preview"
+                  />
+                ) : (
+                  <div className="w-full h-[90vw] md:h-[300px] flex items-center justify-center bg-gray-200 text-gray-600">
+                    Нет изображения
                   </div>
-                  <p className="text-sm font-medium text-center">{card.size}</p>
-                </div>
+                )}
+              </div>
               ));
             })}
 
@@ -217,18 +230,17 @@ useEffect(() => {
                 onClick={closeModal}
               >
                 <button
-                    className="absolute top-[20px] right-[20px] mt-6 bg-[#848484] text-white px-4 py-2 rounded"
+                    className="absolute top-[20px] right-[20px] mt-6 bg-[#848484] text-white px-4 py-2 rounded "
                     onClick={closeModal}
                   >
                     <IoCloseOutline className='text-[30px]' />
                   </button>
                 <div
-                  className="bg-white rounded-lg p-8 max-w-[90vw] md:max-w-3xl fade-in-up"
+                  className="bg-white  rounded-3xl  max-w-[90vw] md:max-w-3xl fade-in-up"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <h3 className="text-[20px] font-bold mb-6">{card.type || "PDF карточка"}</h3>
                   {card.img ? (
-                    <img src={`/assets/products/${product.prefix + card.img}`} className="w-full md:w-[25vw] mb-6 h-60 object-cover" />
+                    <img src={`/assets/products/${product.prefix + card.img}`} className="w-full md:w-[25vw]  h-full object-cover" />
                   ) : card.previewImg ? (
                     <img src={card.previewImg} className="w-full md:w-[25vw] mb-6 " />
                   ) : (
@@ -236,9 +248,6 @@ useEffect(() => {
                       Нет изображения
                     </div>
                   )}
-                  <p className="text-[14px] font-semibold">{card.size}</p>
-
-                  
                 </div>
               </div>
             );
@@ -250,7 +259,7 @@ useEffect(() => {
         
         {/* Colors */}
         {product.cards.cardType2 ?
-        (<section className="pt-16 px-6 ">
+        (<section className="pt-16  pb-14 px-6 ">
           <div className="max-w-7xl mx-auto">
             
             <div className="grid grid-cols-4 md:grid-cols-7 gap-6">
@@ -315,7 +324,7 @@ useEffect(() => {
         
       </main>
       
-      <Footer />
+      <Footer setActiveCategory={setActiveCategory}/>
     </div>
   );
 };

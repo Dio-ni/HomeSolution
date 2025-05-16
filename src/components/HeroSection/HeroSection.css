@@ -1,9 +1,9 @@
 /* Gradient background with transparency */
 .heroSection{
-  height: 145vh;
+  height: 125vh;
 }
 .scrolling {
- height: 145vh;
+ height: 125vh;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -11,10 +11,11 @@
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0) 0%,         /* transparent at top */
-    rgba(0, 0, 0, 0.2) 30%,   
-    rgba(0, 0, 0, 0.4) 45%,   /* soft darkening starts */
-    rgba(0, 0, 0, 0.6) 50%,      /* mid darkness */
-    rgba(0, 0, 0, 1) 70%,     /* strong shadow */
+    rgba(0, 0, 0, 0) 30%,   
+    rgba(0, 0, 0, 0) 45%,   /* soft darkening starts */
+    rgba(0, 0, 0, 0) 50%, 
+    rgba(0, 0, 0, 0.8) 70%,      /* mid darkness */
+    rgba(0, 0, 0, 0.9) 80%,     /* strong shadow */
     rgba(0, 0, 0, 1) 100%        /* fully dark at bottom */
   );
   padding-top: 25vh; 

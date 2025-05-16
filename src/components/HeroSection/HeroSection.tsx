@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import VideoBack from "../../assets/video/video-herosection.mp4";
 import MobileVideo from "../../assets/video/mobile-video.mp4";
+
 import "./HeroSection.css";
 
 const HeroSection = () => {
@@ -37,14 +38,7 @@ const HeroSection = () => {
 
       {/* Scrolling News Banner */}
       <div className="scrolling absolute inset-0 text-white text-center px-4">
-        <div className="hidden md:flex items-center justify-center w-full gap-6 my-6">
-          <hr className="flex-grow border-t border-white opacity-50" />
-          <h1 className="text-3xl md:text-4xl lg:text-5xl text-white whitespace-nowrap">
-            Получить 3D визуализацию
-          </h1>
-          <hr className="flex-grow border-t border-white opacity-50" />
-        </div>
-
+        
         <div className="marquee-container">
           <div className="marquee">
             {Array.from({ length: 10 }).map((_, i) => (

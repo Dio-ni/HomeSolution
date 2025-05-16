@@ -10,6 +10,7 @@ import About from "./pages/About";
 import Address from "./pages/Address";
 import ProductDetail from "./pages/ProductDetail";
 import CatalogPage from "./pages/Catalog";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -18,11 +19,14 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      
       <BrowserRouter>
+      <ScrollToTop />
         <Routes>
+          
           <Route path="/" element={<Index />} />
           <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/product/:category/:title" element={<ProductDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/address" element={<Address />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

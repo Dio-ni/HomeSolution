@@ -26,16 +26,15 @@
 
 /* 🌐 Mobile optimization */
 @media screen and (max-width: 768px) {
+    .catalog-active-items{
+        gap:50px;
+    }
     .active {
-        padding: 7px !important;
+        padding: 4px 14px !important;
         font-size: 14px;
         border: 1px solid black;
     }
 
-    .catalog-active-items {
-        gap: 55px;
-        padding: 2rem 0;
-    }
 
     .item-image {
         margin-bottom: 30px;
@@ -44,4 +43,22 @@
     .catalog-item h3 {
         font-size: 1rem;
     }
+}
+
+
+@keyframes slideInLetter {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.text-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideInLetter 0.5s forwards;
 }

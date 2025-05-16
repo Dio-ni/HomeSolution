@@ -1,7 +1,6 @@
 export type CardType1 = {
-  type: string;
+
   img: string;
-  size: string;
 };
 
 export type CardType2 = {
@@ -21,7 +20,7 @@ export type Product = {
   description: string;
   image: string;
   backimg: string;
-  category: "sofas" | "beds" | "thumbnail" | "sideboard" | "tables";
+  category: "sofas" | "beds" | "cabinets" | "sideboard" | "tables";
   imgs? : {
     img1: string;
     img2: string;

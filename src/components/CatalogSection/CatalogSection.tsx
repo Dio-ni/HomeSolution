@@ -3,7 +3,13 @@ import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import "./CatalogSection.css";
 import { allProducts } from "@/data/allProducts";
+import { motion } from "framer-motion";
+import AnimatedTitle from "../AnimatedTitle";
 
+type CatalogSectionProps = {
+  activeCategory: string;
+  setActiveCategory: (category: string) => void;
+};
 // Product type
 export type Product = {
   id: number;
@@ -36,11 +42,10 @@ const categories = [
   { id: "beds", name: "Кровати" },
   { id: "cabinets", name: "Тумбы" },
   { id: "sideboard", name: "Серванты" },
-  { id: "tables", name: "Столы" },
 ];
 
-const CatalogSection = () => {
-  const [activeCategory, setActiveCategory] = useState("sofas");
+const CatalogSection  = ({ activeCategory, setActiveCategory }: CatalogSectionProps) => {
+  
 
   const filteredProducts = allProducts.filter(
     (product) => product.category === activeCategory
@@ -52,8 +57,8 @@ const CatalogSection = () => {
     <section id="catalog" className="relative py-6 px-2 md:py-16 md:px-6 bg-furniture-beige">
       <div className="max-w-7xl mx-auto">
         {/* Category Navigation */}
-        <div className="flex justify-center mb-12">
-          <div className="flex w-full flex-wrap justify-between md:justify-between gap-0 md:gap-2">
+        <div className="flex justify-center mb-12" >
+          <div className="flex w-full flex-wrap justify-between md:justify-around gap-0 md:gap-2">
             {categories.map((category) => (
               <button
                 key={category.id}
@@ -77,10 +82,11 @@ const CatalogSection = () => {
         return (
           <Link
             key={product.id}
-            to={`/product/${product.id}`}
-            className="catalog-item group w-full"
+            // to={`/product/${product.id}`}
+            to={`/product/${product.category}/${product.title.toLowerCase().replace(/\s+/g, '-')}`}
+            className="relative group w-full"
           >
-            <div className="item-image overflow-hidden rounded-lg pb-2 md:pb-10 ">
+            <div className="item-image text-center overflow-hidden rounded-lg pb-2 md:pb-10  relative z-10 w-full h-full">
               {product.image ? (
                 <img
                   src={`/assets/products/${product.prefix+product.image}`}
@@ -88,12 +94,20 @@ const CatalogSection = () => {
                   loading="lazy"
                 />
               ) : (
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                <div className="z-[1] w-full h-full bg-gray-200 flex items-center justify-center">
                   <span className="text-gray-500">Изображение отсутствует</span>
                 </div>
               )}
             </div>
-            <h3 className="text-2xl md:text-3xl font-medium text-center">{product.title}</h3>
+            
+            
+            {/* <h3 className=" 
+                absolute inset-0 z-0 flex items-start justify-center text-center 
+      text-2xl md:text-[115px] font-light text-black pointer-events-none 
+      opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 
+      transition-all duration-500 ease-in-out">{product.title}</h3>
+       */}
+       <AnimatedTitle text={product.title} />
           </Link>
         );
       })}
