@@ -23,7 +23,7 @@ const Index = () => {
         <CatalogSection activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
         <AdvantagesSection />
         <InfoSection />
-        <ContactSection backgroundImageUrl="/assets/contactSection.png"/>
+        <ContactSection />
         <div className="realtive">
           <a className="fixed bottom-10px right-10px" href="#"><FaWhatsapp className="w-5 h-5"/></a>
         </div>

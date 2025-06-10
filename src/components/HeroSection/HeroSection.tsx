@@ -6,6 +6,7 @@ import "./HeroSection.css";
 
 const HeroSection = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
     const checkScreen = () => {
@@ -19,7 +20,7 @@ const HeroSection = () => {
 
   return (
     <section className="heroSection">
-      <div className="relative h-screen w-full overflow-hidden">
+      <div className="relative h-screen w-full overflow-hidden bg-black">
         {/* Video Background */}
         <div className="absolute inset-0 w-full h-full">
           <video
@@ -27,8 +28,8 @@ const HeroSection = () => {
             loop
             muted
             playsInline
-            className="w-full h-full object-cover"
-            poster="/placeholder.svg"
+            className={`w-full h-full object-cover transition-opacity duration-500 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
+            onCanPlay={() => setVideoReady(true)}
           >
             <source src={isMobile ? MobileVideo : VideoBack} type="video/mp4" />
           </video>
@@ -38,12 +39,16 @@ const HeroSection = () => {
 
       {/* Scrolling News Banner */}
       <div className="scrolling absolute inset-0 text-white text-center px-4">
-        
         <div className="marquee-container">
           <div className="marquee">
             {Array.from({ length: 10 }).map((_, i) => (
-              <span key={i} className="text-[12px] md:text-[24px] text-white font-semibold">
-                -20% скидки на диваны
+              <span  key={i} className="mx-4 flex gap-[20vw]">
+              <span  className="text-[12px] md:text-[24px] text-white font-semibold">
+                Летний UPDATE - 11 - 14 ИЮНЯ
+              </span>
+              <span  className="text-[12px] md:text-[24px] text-white font-semibold">
+                СКИДКИ ДО -50%
+              </span>
               </span>
             ))}
           </div>

@@ -31,7 +31,7 @@ const categories = [
     {
       name: "Тумбочки",
       category:"cabinets",
-      subcategories: ["OPAL", "TULSA BLACK", "BOSTON","LAZIO","APEL"]
+      subcategories: ["OPAL", "TULSA BLACK", "BOSTON","LAZIO","AREL"]
     },
     {
       name: "Серванты",
@@ -68,7 +68,7 @@ useEffect(() => {
 
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-black z-50  px-6 py-3  text-white">
+    <nav className="fixed top-0 left-0 right-0 bg-black z-[11000]  px-6 py-3  text-white">
       <div className="max-w-7xl mx-auto relative flex items-center justify-between">
         
         {/* --- Desktop Logo --- */}
@@ -86,9 +86,12 @@ useEffect(() => {
         </div>
 
         {/* --- Centered Nav Buttons (Desktop Only) --- */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:flex items-center gap-4">
+        <div className=" hidden md:flex items-center gap-4">
         <NavLink to="/" className={({ isActive }) => isActive ? "nav-button underline underline-offset-8" : "nav-button"}>Каталог</NavLink>
         <NavLink to="/about" className={({ isActive }) => isActive ? "nav-button underline underline-offset-8" : "nav-button"}>Шоурум</NavLink>
+        <NavLink to="/services" className={({ isActive }) => isActive ? "nav-button underline underline-offset-8" : "nav-button"}>Сервис</NavLink>
+        
+        <NavLink to="/designers" className={({ isActive }) => isActive ? "nav-button underline underline-offset-8" : "nav-button"}>Дизайнеры</NavLink>
 
         </div>
 
@@ -114,9 +117,9 @@ useEffect(() => {
               href="https://wa.me/77007420000"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors duration-200"
+              className="hidden md:flex items-center gap-2 px-3 py-[5px] rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors duration-200"
             >
-                <FaWhatsapp className="w-6 h-6"  />
+                <FaWhatsapp className="w-5 h-5"  />
               {/* <img className="w-5 h-5" src={Whatsapp} alt="WhatsApp" /> */}
               <span className="text-sm font-medium">Получить консультацию</span>
             </a>
@@ -158,16 +161,20 @@ useEffect(() => {
 
         return (
           <div key={index} className="group relative">
-            <p className={`py-1 ${isActiveCategory ? "text-white" : "text-[#808080]"} hover:text-white`}>
+            <p className={`py-1 text-white hover:text-white`}>
               {category.name}
             </p>
 
             {category.subcategories.filter(sub => sub !== "").length > 0 && (
+              
               <div className="group-hover:block bg-black min-w-[150px] z-50">
                 <ul>
                   {category.subcategories.map((subcat, subIndex) => {
+                    // const normalizedSubcat = subcat.toLowerCase().replace(/\s+/g, '-');
+                    // const isActiveSubcat = normalizedSubcat === currentTitle;
                     const normalizedSubcat = subcat.toLowerCase().replace(/\s+/g, '-');
-                    const isActiveSubcat = normalizedSubcat === currentTitle;
+                      // Подсвечиваем подкатегорию только если совпадают и категория, и подкатегория
+                      const isActiveSubcat = (category.category === currentCategory) && (normalizedSubcat === currentTitle);
 
                     return (
                       subcat && (
@@ -199,6 +206,8 @@ useEffect(() => {
         <ul className="space-y-4 text-left">
           <li className="no-padding-list"><NavLink to="/" className={({ isActive }) => isActive ? "nav-button underline  underline-offset-8" : "nav-button"}>Каталог</NavLink></li>
           <li className="no-padding-list"><NavLink to="/about" className={({ isActive }) => isActive ? "nav-button underline underline-offset-8" : "nav-button"}>Шоурум</NavLink></li>
+          <li className="no-padding-list"><NavLink to="/services" className={({ isActive }) => isActive ? "nav-button underline underline-offset-8" : "nav-button"}>Сервис</NavLink></li>
+          <li className="no-padding-list"><NavLink to="/designers" className={({ isActive }) => isActive ? "nav-button underline underline-offset-8" : "nav-button"}>Дизайнеры</NavLink></li>
 
           
         </ul>

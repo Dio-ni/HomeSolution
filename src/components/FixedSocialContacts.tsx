@@ -14,7 +14,7 @@ const FixedSocialContacts = () => {
         display: "flex",
         flexDirection: "column",
         gap: "15px",
-        zIndex: 1000,
+        zIndex: 12000,
       }}
     >
       <a

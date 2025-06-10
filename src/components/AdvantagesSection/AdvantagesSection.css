@@ -3,13 +3,14 @@
 }
 .advantages-title{
     letter-spacing: 2px;
-    font-size: 60px;
+    font-size: 40px;
 }
 
 
 .advantage-item {
 display: flex;
 align-items: center;
+margin-bottom: 0 !important;
 gap: 12px;
 }
 @media screen and (max-width: 768px) {
@@ -31,5 +32,5 @@ gap: 12px;
 
 .scroll-wrapper {
   display: flex;
-  animation: scroll-cards 70s linear infinite;
+  animation: scroll-cards 30s linear infinite;
 }

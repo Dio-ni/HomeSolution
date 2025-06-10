@@ -145,12 +145,7 @@
   background-color: #F5F5F0;
 }
 
-@font-face {
-  font-family: 'MakCustomFont';
-  src: url('./assets/fonts/Web/MAK.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
+
 
 @keyframes fadeInUp {
   from {
@@ -165,4 +160,103 @@
 
 .fade-in-up {
   animation: fadeInUp 0.4s ease-out;
+}
+
+
+#amofroms_main_wrapper{
+    
+    width: 100% ;
+    border: 0;
+    background: #f5f5f5 !important;
+    box-shadow: none !important;
+}
+.sidebar_left{
+    max-width: 100% !important;
+}
+#amo-form-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#amo-form-wrapper iframe{
+    width: 100%;
+}
+#amo-form-wrapper body{
+    width: 100%;
+}
+
+body{
+  position: relative;
+}
+.contact-section{
+  position: absolute;
+  bottom: 80vh;
+  left: 10%;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  z-index: 100;
+}
+.contact-section img{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: -100px;
+}
+.custom-block {
+  position: relative;
+  width: 80%;
+  bottom: 150px;
+  display: flex;
+  justify-content: space-between;
+}
+.left_text{
+  width: 40%;
+  position: relative;
+}
+.left_text h2{
+  font-size: 30px;
+  font-weight: 600;
+  padding-bottom: 30px;
+}
+.left_text p{
+  font-size: 24px;
+}
+.amoforms_iframe {
+  margin: 0 !important;
+  width: 50% !important;
+  max-width: 100%;
+  display: block !important;
+  border: none !important;
+}
+
+@media screen and (max-width: 789px) {
+  .contact-section{
+    bottom: 55rem;
+  }
+  .custom-block{
+    width: 90%;
+    bottom: 0px;
+    gap:50px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .amoforms_iframe{
+    width: 100% !important;
+  }
+  .left_text{
+    width: 100% !important;
+    
+  }
+  .left_text h2{
+    font-size: 24px;
+  }
+  .left_text p{
+    font-size: 20px;
+  }
+  
+  .contact-section img{
+    bottom: 0px;
+  }
 }

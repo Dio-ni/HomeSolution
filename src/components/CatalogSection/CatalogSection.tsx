@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import "./CatalogSection.css";
@@ -51,6 +51,24 @@ const CatalogSection  = ({ activeCategory, setActiveCategory }: CatalogSectionPr
     (product) => product.category === activeCategory
   );
 
+  useEffect(() => {
+  const storedCategory = localStorage.getItem("activeCategory");
+
+  if (storedCategory) {
+    setActiveCategory(storedCategory);
+
+    // Scroll to #catalog after short delay
+    setTimeout(() => {
+      const el = document.getElementById("catalog");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+
+    localStorage.removeItem("activeCategory");
+  }
+}, []);
+
   
 
   return (
@@ -58,7 +76,7 @@ const CatalogSection  = ({ activeCategory, setActiveCategory }: CatalogSectionPr
       <div className="max-w-7xl mx-auto">
         {/* Category Navigation */}
         <div className="flex justify-center mb-12" >
-          <div className="flex w-full flex-wrap justify-between md:justify-around gap-0 md:gap-2">
+          <div className="flex w-full flex-wrap justify-between md:justify-center gap-0 md:gap-16">
             {categories.map((category) => (
               <button
                 key={category.id}

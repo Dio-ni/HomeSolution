@@ -11,6 +11,10 @@ type FooterProps = {
 };
 
 const Footer  = ({ setActiveCategory }: FooterProps) => {
+const handleClick = (category) => {
+  localStorage.setItem("activeCategory", category); // Store category
+  window.location.href = "/#catalog"; // Navigate to home with hash
+};
 
   return (
     <footer className="bg-black text-white py-12 px-6">
@@ -30,10 +34,10 @@ const Footer  = ({ setActiveCategory }: FooterProps) => {
           <div>
             <h4 className="text-lg font-medium mb-4">Каталог</h4>
             <ul className="space-y-2">
-              <li><a href="#catalog" onClick={() => setActiveCategory("sofas")} className="text-gray-400 hover:text-white">Диваны</a></li>
-              <li><a href="#catalog" onClick={() => setActiveCategory("beds")} className="text-gray-400 hover:text-white">Кровати</a></li>
-              <li><a href="#catalog" onClick={() => setActiveCategory("cabinets")} className="text-gray-400 hover:text-white">Тумбы</a></li>
-              <li><a href="#catalog" onClick={() => setActiveCategory("sideboard")} className="text-gray-400 hover:text-white">Серванты</a></li>
+              <li><button onClick={() => handleClick("sofas")} className="text-gray-400 hover:text-white">Диваны</button></li>
+              <li><button onClick={() => handleClick("beds")} className="text-gray-400 hover:text-white">Кровати</button></li>
+              <li><button onClick={() => handleClick("cabinets")} className="text-gray-400 hover:text-white">Тумбы</button></li>
+              <li><button onClick={() => handleClick("sideboard")} className="text-gray-400 hover:text-white">Серванты</button></li>
             </ul>
           </div>
           

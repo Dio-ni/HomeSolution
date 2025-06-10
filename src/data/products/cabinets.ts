@@ -38,15 +38,9 @@ export const cabinets: Product[] = [
     category: "cabinets",
     cards: {
       cardType1: [
-        { img: "opal-1.png" },
-        { img: "opal-2.png" },
-        { img: "opal-3.png" },
-        { img: "opal-4.png" },
-        { img: "opal-5.png" },
-        { img: "opal-6.png" },
-        { img: "opal-7.png" },
-        { img: "opal-8.png" },
-      ],
+        { img: "tulsablack-1.png" },
+        { img: "tulsablack-2.png" },
+              ],
       cardType3: [
         { pdfUrl: "", title: "Каталог Ликвидации 14.03.2025" },
         { pdfUrl: "#", title: "Каталог Стулья 14.03.2025" },

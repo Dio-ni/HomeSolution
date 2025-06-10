@@ -15,27 +15,29 @@ import { Wave } from "react-animated-text";
 import FixedSocialContacts from "@/components/FixedSocialContacts";
 
 
-const categories = [
-  { id: "sofas", name: "Диваны" },
-  { id: "beds", name: "Кровати" },
-  { id: "cabinets", name: "Тумбы" },
-  { id: "sideboard", name: "Серванты" },
-  { id: "tables", name: "Столы" },
-];
 
 const ProductDetail = () => {
-  
-  const [activeCategory, setActiveCategory] = useState("sofas");
-const [fullscreenImg, setFullscreenImg] = useState<string | null>(null);
-const closeFullscreenImg = () => setFullscreenImg(null);
-
-  const filteredProducts = allProducts.filter(
-    (product) => product.category === activeCategory
-  );
-  const { title } = useParams();
   const navigate = useNavigate();
+
+  // Validate category param, fallback to first category or null
   
-  const product = allProducts.find(p => p.title.toLowerCase().replace(/\s+/g, '-') === title);
+  const [fullscreenImg, setFullscreenImg] = useState<string | null>(null);
+  const closeFullscreenImg = () => setFullscreenImg(null);
+  const { title, category } = useParams();
+  const [activeCategory, setActiveCategory] = useState(category || "sofas");
+
+  // Sync activeCategory with URL param if it changes
+  useEffect(() => {
+    if (category) {
+      setActiveCategory(category);
+    }
+  }, [category]);
+
+  const product = allProducts.find(
+    (p) =>
+      p.title.toLowerCase().replace(/\s+/g, "-") === title &&
+      p.category === category
+  );
   
   if (!product) {
     return (
@@ -71,7 +73,7 @@ useEffect(() => {
 
   
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-hidden">
       <Navbar />
       <FixedSocialContacts/>
       
@@ -102,9 +104,9 @@ useEffect(() => {
               alt={product.title} 
               className="w-full h-full object-cover"
             />
-          <div className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center">
+          <div className="font-light absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center">
             <div className="text-center text-white">
-              <h1 className="text-[12vw] md:text-[96px] font-bold mb-4 font-custom tracking-[15px] md:tracking-[30px]">{product.title}</h1>
+              <h1 className="text-[12vw]  md:text-[96px]  mb-4 mak-custom-product tracking-[15px] md:tracking-[15px]">{product.title}</h1>
             </div>
           </div>
         </section>
@@ -114,21 +116,19 @@ useEffect(() => {
 
         {/* Images of Product */}
         
-        {product.imgs ?  (<section className='overflow-hidden w-full h-[20vh] md:h-[100vh] flex flex-row gap-2 md:gap-4 p-2 md:p-0 md:mt-16'>
+        {product.imgs ?  (<section className='overflow-hidden w-full h-[30vh] md:h-[100vh] flex flex-row gap-2 md:gap-4 p-2 md:p-0 md:mt-16'>
           <div className='h-full prod-imgs-left w-[30%]'>
               <img className="h-full" src={`/assets/products/${product.prefix+product.imgs.img1}`}
               onClick={() => setFullscreenImg(`/assets/products/${product.prefix + product.imgs.img1}`)}/>
-              
-
           </div>
-          <div className='h-full prod-imgs-right flex  gap-4 flex-col'>
-              <div className='h-[40%] right-top flex  gap-4 md:gap-10 flex-row'>
-              <img className='w-[40%]' src={`/assets/products/${product.prefix+product.imgs.img2}`}
-              onClick={() => setFullscreenImg(`/assets/products/${product.prefix + product.imgs.img2}`)}/>
-              <img className='w-[60%]' src={`/assets/products/${product.prefix+product.imgs.img3}`}
-              onClick={() => setFullscreenImg(`/assets/products/${product.prefix + product.imgs.img3}`)}/>
+          <div className='h-full prod-imgs-right flex w-[70%]  gap-1 md:gap-4 flex-col'>
+              <div className='h-[40%] right-top flex  gap-1 md:gap-10 flex-row'>
+                <img className='w-[40%]' src={`/assets/products/${product.prefix+product.imgs.img2}`}
+                onClick={() => setFullscreenImg(`/assets/products/${product.prefix + product.imgs.img2}`)}/>
+                <img className='w-[60%]' src={`/assets/products/${product.prefix+product.imgs.img3}`}
+                onClick={() => setFullscreenImg(`/assets/products/${product.prefix + product.imgs.img3}`)}/>
               </div>
-              <div className='h-[60%] right-bottom flex gap-10 flex-row '>
+              <div className='h-[60%] right-bottom flex gap-1 md:gap-4 flex-row '>
                   <img className='w-[60%]' src={`/assets/products/${product.prefix+product.imgs.img4}`}
                   onClick={() => setFullscreenImg(`/assets/products/${product.prefix + product.imgs.img4}`)}/>
                   <img className='w-[40%]' src={`/assets/products/${product.prefix+product.imgs.img5}`}
@@ -193,14 +193,14 @@ useEffect(() => {
                 <div
                 key={`${key}-${index}`}
                 onClick={() => handleCardClick(key, index)}
-                className="min-w-[280px] md:min-w-0 md:w-auto items-center flex-shrink-0 md:flex-shrink 
+                className="w-[80vw]  min-w-[280px] md:min-w-0 md:w-auto items-center flex-shrink-0 md:flex-shrink 
                           transition-shadow rounded-[20px] bg-[#F2F2F2] cursor-pointer  
                           border-[2px] border-transparent hover:border-[#1378FB] hover:bg-white overflow-hidden"
               >
                 {card.img ? (
                   <img
                     src={`/assets/products/${product.prefix + card.img}`}
-                    className="w-full h-[90vw] md:h-[105%] object-cover md:transform md:-translate-y-[2px]"
+                    className="w-full md:w-full h-full md:h-[105%] object-cover scale-105 transform "
                     alt="Product"
                   />
                 ) : card.previewImg ? (
@@ -287,7 +287,7 @@ useEffect(() => {
         </section>) : null}
 
 
-        {product.cards.cardType3 ? 
+        {/* {product.cards.cardType3 ? 
         (<section className="py-20 px-6">
           <div className="max-w-7xl mx-auto">
             <h2 className="flex 
@@ -318,12 +318,11 @@ useEffect(() => {
           })}
           </div>
           </div>
-        </section>) : null}
+        </section>) : null} */}
         
-        <ContactSection backgroundImageUrl={`/assets/products/${product.prefix+product.image}`}/>
+        <ContactSection />
         
       </main>
-      
       <Footer setActiveCategory={setActiveCategory}/>
     </div>
   );

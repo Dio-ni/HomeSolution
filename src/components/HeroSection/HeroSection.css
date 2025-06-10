@@ -39,7 +39,7 @@
   white-space: nowrap;
   height: 50px;
   font-size: 24px;
-  gap:200px;
+  gap:20vw;
   animation: scroll-left 40s linear infinite;
 }
 .marquee span{

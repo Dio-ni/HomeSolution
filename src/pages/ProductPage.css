@@ -17,3 +17,13 @@
     animation: revealText 5s ease forwards;
   }
   
+
+@font-face {
+  font-family: 'MakCustomFont';
+  src: url('../assets/mak-font/MAK.otf') format('woff') !;
+  font-weight: normal;
+  font-style: normal;
+}
+.mak-custom-product{
+font-family: 'MakCustomFont', sans-serif;
+}

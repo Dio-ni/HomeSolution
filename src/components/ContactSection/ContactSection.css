@@ -1,0 +1,22 @@
+#amofroms_main_wrapper{
+    
+    width: 100% ;
+    max-width:1200px !important;
+    border: 0;
+    background: #f5f5f5 !important;
+    box-shadow: none !important;
+}
+.sidebar_left{
+    max-width: 100% !important;
+}
+#amo-form-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#amo-form-wrapper iframe{
+    width: 100%;
+}
+#amo-form-wrapper body{
+    width: 100%;
+}

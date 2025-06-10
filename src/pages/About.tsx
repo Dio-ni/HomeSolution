@@ -1,14 +1,21 @@
 
-import React from 'react';
+import  { useState } from 'react';
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
 import ContactSection from "@/components/ContactSection/ContactSection";
 import AboutImg from '../assets/about.png';
+import AddressAbout from '../assets/aboutPageAddress.png';
+import AddressContact from '@/components/AddressContact/AddressContact';
+import { useLocation } from "react-router-dom";
+import FixedSocialContacts from '@/components/FixedSocialContacts';
 
 const About = () => {
+   const location = useLocation();
+  const [activeCategory, setActiveCategory] = useState("sofas");
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-hidden">
       <Navbar />
+      <FixedSocialContacts/>
       
       <main className="pt-14">
         {/* Hero Section */}
@@ -48,87 +55,41 @@ const About = () => {
         
         <hr className="border-t border-gray-200 max-w-7xl  mx-16" />
         
-        {/* Наша команда */}
-        <section className="py-16 px-6 bg-white">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-medium text-center mb-12">Наша команда</h2>
-            
-            <div className="mb-12">
-              <p className="text-lg max-w-2xl">
-              Руководство компании : 
+        <main className="my-20 mx-10">
+        {/* Map Section */}
+        <section className="">
+          
+          <div className="mb-12">
+              <p className="text-lg max-w-2xl font-medium mb-14">
+              Местоположение : 
               </p>
-              <hr className="border-t border-gray-200 my-8" />
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                  <h3 className="text-lg font-base">Уразбеков Даурен - генеральный директор</h3>
+              <div className="flex flex-row gap-[200px]">
+                <div className='flex flex-col gap-4'>
+                  <p>Казахстан г. Астана - Коргалжын шоссе 13Д</p>
+                  <p>+7 (700) 742-00-00</p>
+                  <p>saloni.kazakhstan@gmail.com</p>
+                  <p>homesolution.kz</p>
                   
                 </div>
                 
-                <div>
-                  <h3 className="text-lg font-base">Уразбекова Молдир - директор</h3>
+                  <h3 className="text-lg font-base">ТД Корме</h3>
                   
-                </div>
                 
-                <div>
-                  <h3 className="text-lg font-base">Тукунов Бахтияр - управляющий директор</h3>
-                  
-                </div>
+                
               </div>
-            </div>
-            
-            {/* Carousel Photos */}
-            <div className="overflow-hidden relative">
-              <div className="flex animate-marquee whitespace-nowrap">
-                <img src="/placeholder.svg" alt="Team member 1" className="h-64 w-80 object-cover mr-4" />
-                <img src="/placeholder.svg" alt="Team member 2" className="h-64 w-80 object-cover mr-4" />
-                <img src="/placeholder.svg" alt="Team member 3" className="h-64 w-80 object-cover mr-4" />
-                <img src="/placeholder.svg" alt="Team member 4" className="h-64 w-80 object-cover mr-4" />
-                <img src="/placeholder.svg" alt="Team member 5" className="h-64 w-80 object-cover mr-4" />
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        {/* Корпоративная культура */}
-        <section className="py-16 px-6 bg-white">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Наша корпоративная культура</h2>
-            
-            <div className="grid grid-cols-12 gap-4 mb-8">
-              <div className="col-span-4">
-                <img src="/placeholder.svg" alt="Culture 1" className="w-full h-64 object-cover rounded" />
-              </div>
-              <div className="col-span-8">
-                <img src="/placeholder.svg" alt="Culture 2" className="w-full h-64 object-cover rounded" />
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-12 gap-4 mb-8">
-              <div className="col-span-8">
-                <img src="/placeholder.svg" alt="Culture 3" className="w-full h-64 object-cover rounded" />
-              </div>
-              <div className="col-span-4">
-                <img src="/placeholder.svg" alt="Culture 4" className="w-full h-64 object-cover rounded" />
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-12 gap-4 mb-8">
-              <div className="col-span-4">
-                <img src="/placeholder.svg" alt="Culture 5" className="w-full h-64 object-cover rounded" />
-              </div>
-              <div className="col-span-8">
-                <img src="/placeholder.svg" alt="Culture 6" className="w-full h-64 object-cover rounded" />
-              </div>
-            </div>
-          </div>
-        </section>
+            </div></section>
+        <img 
+            src={AddressAbout}
+            alt="Интерьер Saloni" 
+            className="w-full h-full object-cover"
+          />
+      </main>
         
         {/* Обратная связь */}
-        <ContactSection />
+        <ContactSection/>
       </main>
-      
-      <Footer />
+      <Footer setActiveCategory={setActiveCategory}/>
     </div>
   );
 };
