@@ -114,7 +114,8 @@ useEffect(() => {
               <span>+7 (700) 742-00-00</span>
             </a>
             <a
-              href="https://wa.me/77007420000"
+              
+            href="https://wa.me/77007420000?text=Здравствуйте!%0A%0AМожете%20отправить%20каталог%3F"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:flex items-center gap-2 px-3 py-[5px] rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors duration-200"
@@ -131,14 +132,15 @@ useEffect(() => {
           {/* Mobile social icons and burger */}
           <div className="md:hidden flex items-center gap-3">
             <a 
-              href="https://wa.me/77007420000"
+              href="https://www.instagram.com/homesolution.kz/#"
               target="_blank"
               rel="noopener noreferrer">
                 <GrInstagram  className="w-5 h-5"/>
             </a>
             {/* <a href="#"><FaWhatsapp className="w-5 h-5"/></a> */}
             <a 
-              href="https://wa.me/77007420000"
+              
+              href="https://wa.me/77007420000?text=Здравствуйте!%0A%0AМожете%20отправить%20каталог%3F"
               target="_blank"
               rel="noopener noreferrer">
                 <FaWhatsapp className="w-6 h-6"  />
@@ -231,7 +233,8 @@ useEffect(() => {
                
               target="_blank"
               rel="noopener noreferrer"
-              href="https://wa.me/77007420000" className="  bg-blue-600 text-white text-sm rounded-full py-2 px-4 " 
+              
+             href="https://wa.me/77007420000?text=Здравствуйте!%0A%0AМожете%20отправить%20каталог%3F" className="  bg-blue-600 text-white text-sm rounded-full py-2 px-4 " 
               onClick={() => setIsMobileMenuOpen(false)}>
               Получить консультацию
             </a>

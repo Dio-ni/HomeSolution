@@ -89,7 +89,7 @@ const AdvantagesSection = () => {
             gap-[7px] md:gap-[10px] 
             bg-[#26D367] rounded-[10px] md:rounded-[30px] 
             text-white md:py-[10px] py-[10px] md:px-[40px] transition-colors"
-            href="https://wa.me/77007420000"
+            href="https://wa.me/77007420000?text=Здравствуйте!%0A%0AМожете%20отправить%20каталог%3F"
             target="_blank"
             rel="noopener noreferrer"
           >

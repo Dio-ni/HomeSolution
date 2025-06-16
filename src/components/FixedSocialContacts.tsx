@@ -28,7 +28,7 @@ const FixedSocialContacts = () => {
       </a>
 
       <a
-        href="https://wa.me/77007420000"
+        href="https://wa.me/77007420000?text=Здравствуйте!%0A%0AМожете%20отправить%20каталог%3F"
         target="_blank"
         rel="noopener noreferrer"
         style={{ color: "#25D366", fontSize: "28px" }}

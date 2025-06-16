@@ -2,8 +2,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import ContactImg from "../../assets/contactadress.png";
 
 import { useLocation } from "react-router-dom"; // 👈 Add this
+
+import Whatsapp from "../../assets/icons/whatsapp.svg"
 
 interface ContactProps {
   backgroundImageUrl?: string;
@@ -54,148 +57,58 @@ const AddressContact = ({ backgroundImageUrl }: ContactProps)  => {
   };
 
   return (
-    <section id="contact" className="relative pt-[30px] md:pt-[200px] pb-[60px] md:pb-[270px] px-6  text-black">
+    <section id="contact" className="bg-black text-white relative pt-[40px] md:pt-10 pb-[40px] md:pb-16  px-14  text-black">
       {/* Background image with overlay */}
       
       
-      <div className=" text-center md:text-left relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 ">
+      <div className=" text-left relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-12 ">
         {/* Left side - Text content */}
         <div className="x">
            
           <p className="text-[14px] md:text-[30px] font-medium mb-6">
-            Свяжитесь с нами
+            Местоположение:
           </p>
-            <p className="mt-[20px] md:mt-[40px] text-[12px] md:text-[22px]">
-            Мы открыты к партнерству и готовы предложить вам качественную мебель, стильные решения и индивидуальный подход.
+          <p className="mt-[10px] md:mt-[20px] text-[12px] md:text-[22px]">
+            Казахстан г. Астана - Коргалжын шоссе 13Д 
+            
+          </p>
+          <p className="mt-[10px] md:mt-[20px] text-[12px] md:text-[22px]">
+           Достык 3 -  МЦ Корме            
           </p>
           
-          <p className="mt-[20px] md:mt-[40px] text-[12px] md:text-[22px]">
-            Наш адрес
-            <br />
-            г. Астана, шоссе Коргалжын 13Д 
-            <br />
-            Достык 3 - МЦ Корме
+          <p className="mt-[10px] md:mt-[20px] text-[12px] md:text-[22px]">
+            +7 (700) 742-00-00
             </p>
-          <p className="mt-[20px] md:mt-[40px] text-[12px] md:text-[22px]">
-            Контакты
-            <br />
-            +7 (700) 742-00-00 
+          <p className="mt-[10px] md:mt-[20px] text-[12px] md:text-[22px]">
+            saloni.kazakhstan@gmail.com
+            
             </p>
         </div>
         
         {/* Right side - Contact form */}
-        <div className="bg-white 
+        <div className="w-full
         rounded-[15px] md:rounded-[40px] 
         py-[16px] md:py-[40px] 
-        px-[13px] md:px-[30px] ">
-          <form onSubmit={handleSubmit} className="space-y-[9px] md:space-y-[20px]">
-            <div>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="contact-input 
-                font-regular 
-                text-[11px] md:text-[20px] 
-                bg-[#F5F5F7] 
-                border-0 
-                rounded-[6px] md:rounded-[15px] 
-                py-[15px] 
-                px-[20px] md:px-[30px]"
-                required
-                placeholder="Фамилия"
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="contact-input 
-                font-regular 
-                text-[11px] md:text-[20px] 
-                bg-[#F5F5F7] 
-                border-0 
-                rounded-[6px] md:rounded-[15px] 
-                py-[15px] 
-                px-[20px] md:px-[30px]"
-                required
-                placeholder="Имя"
-              />
-            </div>
-            <div>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className="contact-input 
-                font-regular 
-                text-[11px] md:text-[20px] 
-                bg-[#F5F5F7] 
-                border-0 
-                rounded-[6px] md:rounded-[15px] 
-                py-[15px] 
-                px-[20px] md:px-[30px]"
-                placeholder="Телефон"
-                required
-              />
-            </div>
-            
-           <div>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="contact-input 
-                font-regular 
-                text-[11px] md:text-[20px] 
-                bg-[#F5F5F7] 
-                border-0 
-                rounded-[6px] md:rounded-[15px] 
-                py-[15px] 
-                px-[20px] md:px-[30px]"
-                required
-                placeholder="Компания"
-              />
-            </div>
-            <div>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={3}
-                placeholder="Введите сообщения"
-                className="contact-input 
-                font-regular 
-                text-[11px] md:text-[20px] 
-                bg-[#F5F5F7] 
-                border-0 
-                rounded-[6px] md:rounded-[15px] 
-                py-[15px] 
-                px-[20px] md:px-[30px]"
-                ></textarea>
-            </div>
-            
-            <Button type="submit" className="
-            w-full bg-[#1378FB] 
-            text-white text-[13px] md:text-[24px]
-            py-[13px] md:py-[35px] fonr-semibold
-            rounded-[6px] md:rounded-[15px] 
-            ">
-              Отправить
-            </Button>
-          </form>
+         md:px-[30px] ">
+          <img src={ContactImg} />
         </div>
+        
       </div>
+      <div className="flex items-center justify-center mt-8 md:mt-[70px]">
+          <a
+            className="max-w-[60vw] md:max-w-[400px] 
+            w-full justify-center items-center flex 
+            gap-[7px] md:gap-[10px] 
+            bg-[#26D367] rounded-[10px] md:rounded-[20px] 
+            text-white md:py-[10px] py-[10px] md:px-[40px] transition-colors"
+            href="https://wa.me/77007420000?text=Здравствуйте!%0A%0AМожете%20отправить%20каталог%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={Whatsapp} className="h-[14px] md:h-[26px]" />
+            <span className="text-[16px] md:text-[24px]">Связаться с нами</span>
+          </a>
+        </div>
     </section>
   );
 };

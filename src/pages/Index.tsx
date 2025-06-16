@@ -7,6 +7,8 @@ import { FaWhatsapp } from "react-icons/fa";
 import InfoSection from "@/components/InfoSection";
 import ContactSection from "@/components/ContactSection/ContactSection";
 import Footer from "@/components/Footer";
+
+import AddressContact from '@/components/AddressContact/AddressContact';
 import { useState } from "react";
 import FixedSocialContacts from "@/components/FixedSocialContacts";
 
@@ -20,6 +22,7 @@ const Index = () => {
       <main>
         <FixedSocialContacts/>
         <HeroSection />
+        <AddressContact/>
         <CatalogSection activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
         <AdvantagesSection />
         <InfoSection />

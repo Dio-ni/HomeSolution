@@ -44,10 +44,10 @@ const HeroSection = () => {
             {Array.from({ length: 10 }).map((_, i) => (
               <span  key={i} className="mx-4 flex gap-[20vw]">
               <span  className="text-[12px] md:text-[24px] text-white font-semibold">
-                Летний UPDATE - 11 - 14 ИЮНЯ
+                г.Астана Коргалжинское Шоссе 13д 
               </span>
               <span  className="text-[12px] md:text-[24px] text-white font-semibold">
-                СКИДКИ ДО -50%
+                скидки до -30%  на мебель
               </span>
               </span>
             ))}
