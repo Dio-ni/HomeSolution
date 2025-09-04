@@ -42,12 +42,12 @@ const HeroSection = () => {
         <div className="marquee-container">
           <div className="marquee">
             {Array.from({ length: 10 }).map((_, i) => (
-              <span  key={i} className="mx-4 flex gap-[20vw]">
+              <span  key={i} className=" flex gap-[20vw]">
               <span  className="text-[12px] md:text-[24px] text-white font-semibold">
-                г.Астана Коргалжинское Шоссе 13д 
+                г.Астана Коргалжинское Шоссе 13д
               </span>
               <span  className="text-[12px] md:text-[24px] text-white font-semibold">
-                скидки до -30%  на мебель
+                Cкидки до -30% на мебели 
               </span>
               </span>
             ))}

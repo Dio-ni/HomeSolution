@@ -10,6 +10,7 @@ import ProductDetail from "./pages/ProductDetail";
 import ScrollToTop from "./components/ScrollToTop";
 import Services from "./pages/Services";
 import Designers from "./pages/Designers";
+import SpaceOffice from "./pages/SpaceOffice";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,8 @@ const App = () => {
             <Route path="/designers" element={<Designers />} />
             <Route path="/product/:category/:title" element={<ProductDetail />} />
             <Route path="/about" element={<About />} />
+            <Route path="/spaceoffice" element={<SpaceOffice />} />
+
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

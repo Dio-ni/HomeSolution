@@ -92,6 +92,7 @@ useEffect(() => {
         <NavLink to="/services" className={({ isActive }) => isActive ? "nav-button underline underline-offset-8" : "nav-button"}>Сервис</NavLink>
         
         <NavLink to="/designers" className={({ isActive }) => isActive ? "nav-button underline underline-offset-8" : "nav-button"}>Дизайнеры</NavLink>
+        {/* <NavLink to="/spaceoffice" className={({ isActive }) => isActive ? "nav-button underline underline-offset-8" : "nav-button"}>Space Office</NavLink> */}
 
         </div>
 
@@ -210,7 +211,7 @@ useEffect(() => {
           <li className="no-padding-list"><NavLink to="/about" className={({ isActive }) => isActive ? "nav-button underline underline-offset-8" : "nav-button"}>Шоурум</NavLink></li>
           <li className="no-padding-list"><NavLink to="/services" className={({ isActive }) => isActive ? "nav-button underline underline-offset-8" : "nav-button"}>Сервис</NavLink></li>
           <li className="no-padding-list"><NavLink to="/designers" className={({ isActive }) => isActive ? "nav-button underline underline-offset-8" : "nav-button"}>Дизайнеры</NavLink></li>
-
+          {/* <li className="no-padding-list"><NavLink to="/spaceoffice" className={({ isActive }) => isActive ? "nav-button underline underline-offset-8" : "nav-button"}>Space Office</NavLink></li> */}
           
         </ul>
         <ul className="space-y-2 pt-10  text-left text-xs text-[#7a7a7a]">

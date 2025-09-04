@@ -1,0 +1,42 @@
+
+@font-face {
+  font-family: 'TrajanPro';
+  src: url('/src/assets/fonts/trajanpro_bold.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.spaceoffice {
+  font-family: 'TrajanPro', serif !important;
+}
+.section_spaceoffice{
+    /* height: 100%; */
+    position: relative;
+    margin-top: -100px;
+}
+.backIconDesc{
+    position: absolute;
+    z-index: 40;
+    top:130px;
+    left:60px;
+}
+.photosblock{
+    height: 90vh;
+}
+@media (max-width: 768px) {
+    .backIconDesc{
+        display: none;
+    }
+  .section_spaceoffice{
+    height: 60vh;
+    margin-top: 20px;
+    
+}
+.centered_text{
+
+    gap:100px;
+}
+.photosblock{
+    height: 38vh;
+}
+}
